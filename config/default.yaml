@@ -1,0 +1,173 @@
+# Configuración por defecto del Agente Bodegón Creator
+# Este archivo contiene todos los parámetros configurables del agente
+
+agent:
+  # Nombre del agente para logging y debugging
+  name: "bodegon-creator"
+
+  # Modelo de Claude a utilizar
+  # Opciones: sonnet (balanceado), opus (máxima calidad), haiku (rápido)
+  model: "sonnet"
+
+  # Número máximo de trabajos concurrentes
+  maxConcurrentJobs: 3
+
+  # Timeout por defecto en milisegundos (5 minutos)
+  defaultTimeout: 300000
+
+# Configuración del módulo de web scraping
+scraping:
+  # Número máximo de imágenes a capturar por producto
+  maxImages: 3
+
+  # Calidad de las imágenes capturadas
+  # Opciones: high (1920x1080), medium (1280x720), low (640x480)
+  imageQuality: "high"
+
+  # Formato de las capturas de pantalla
+  screenshotFormat: "png"
+
+  # Dominios permitidos para scraping
+  allowedDomains:
+    - "exito.com"
+    - "falabella.com"
+    - "linio.com"
+    - "mercadolibre.com"
+    - "amazon.com"
+    - "ebay.com"
+
+  # Configuración del navegador
+  browserConfig:
+    # Ejecutar navegador en modo headless (sin interfaz gráfica)
+    headless: true
+
+    # Dimensiones de la ventana del navegador
+    viewport:
+      width: 1920
+      height: 1080
+
+    # Timeout para navegación y carga de páginas
+    timeout: 30000  # 30 segundos
+
+# Configuración del módulo de composición artística
+composition:
+  # Estilo artístico por defecto para las composiciones
+  defaultStyle: "elegant bodegón"
+
+  # Número máximo de imágenes por composición
+  maxImagesPerComposition: 5
+
+  # Formato de salida de las composiciones
+  outputFormat: "png"
+
+  # Directorio donde se guardarán las composiciones finales
+  outputDirectory: "./bodegon-output"
+
+  # Tamaño máximo del archivo de salida
+  maxSize: "2MB"
+
+# Configuración de reintentos automáticos
+retry:
+  # Número máximo de intentos antes de fallar
+  maxAttempts: 3
+
+  # Delay base entre reintentos en milisegundos
+  baseDelay: 2000  # 2 segundos
+
+  # Delay máximo entre reintentos
+  maxDelay: 30000  # 30 segundos
+
+  # Multiplicador para backoff exponencial
+  backoffMultiplier: 2
+
+# Configuración del sistema de progreso
+progress:
+  # Mostrar barra de progreso interactiva
+  interactive: true
+
+  # Intervalo de actualización del progreso en milisegundos
+  updateInterval: 1000  # 1 segundo
+
+  # Mostrar estimación de tiempo restante (ETA)
+  showEta: true
+
+  # Output detallado con información de depuración
+  detailedOutput: false
+
+# Configuración del sistema de logging
+logging:
+  # Nivel de log
+  # Opciones: debug (muy detallado), info (general), warn (advertencias), error (solo errores)
+  level: "info"
+
+  # Archivo de log
+  file: "./logs/bodegon-agent.log"
+
+  # Tamaño máximo del archivo de log
+  maxFileSize: "10MB"
+
+  # Número máximo de archivos de log a conservar
+  maxFiles: 5
+
+  # También mostrar logs en consola
+  console: true
+
+# Configuración MCP (Model Context Protocol)
+mcp:
+  # Servidores MCP a utilizar
+  servers:
+    playwright:
+      # Servidor para automatización web
+      command: "npx"
+      args: ["@playwright/mcp@latest"]
+
+    nanobanana:
+      # Servidor para generación de imágenes
+      command: "npx"
+      args: ["@claude-nanobanana/server@latest"]
+
+# Configuración de seguridad
+security:
+  # Validar certificados SSL
+  validateSsl: true
+
+  # Timeout de red en milisegundos
+  networkTimeout: 60000  # 1 minuto
+
+  # Límite de tamaño de descarga en MB
+  maxDownloadSize: 50
+
+  # User agent para las solicitudes web
+  userAgent: "Bodegón-Creator-Agent/1.0.0"
+
+# Configuración de caché
+cache:
+  # Habilitar caché de imágenes descargadas
+  enabled: true
+
+  # Directorio de caché
+  directory: "./cache"
+
+  # Tiempo de expiración de caché en horas
+  expiration: 24
+
+  # Tamaño máximo de caché en MB
+  maxSize: 500
+
+# Configuración de notificaciones
+notifications:
+  # Habilitar notificaciones de escritorio
+  desktop: false
+
+  # Enviar notificaciones por correo electrónico
+  email:
+    enabled: false
+    smtp: ""
+    from: ""
+    to: []
+
+  # Configuración de webhook para notificaciones
+  webhook:
+    enabled: false
+    url: ""
+    headers: {}

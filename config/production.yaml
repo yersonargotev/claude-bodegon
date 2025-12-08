@@ -1,0 +1,56 @@
+# Configuración para entorno de producción
+# Hereda todo de default.yaml y optimiza para producción
+
+agent:
+  model: "sonnet"
+  maxConcurrentJobs: 5  # Mayor concurrencia para producción
+
+scraping:
+  maxImages: 5
+  imageQuality: "high"  # Máxima calidad para producción
+  browserConfig:
+    headless: true  # Siempre headless en producción
+    timeout: 60000  # Mayor timeout para estabilidad
+
+composition:
+  maxImagesPerComposition: 8
+  outputDirectory: "./production-output"
+
+retry:
+  maxAttempts: 5  # Más reintentos para mayor robustez
+  baseDelay: 5000  # 5 segundos
+  maxDelay: 120000  # 2 minutos
+
+progress:
+  interactive: false  # Sin interfaz interactiva en producción
+  detailedOutput: false
+  showEta: true
+
+logging:
+  level: "info"  # Solo logs importantes en producción
+  console: false  # Solo a archivo en producción
+  maxFiles: 10  # Más archivos de log
+  maxFileSize: "50MB"  # Archivos más grandes
+
+cache:
+  enabled: true
+  expiration: 168  # 7 días en producción
+  maxSize: 2000  # 2GB de caché
+
+# Configuración de seguridad reforzada
+security:
+  validateSsl: true
+  networkTimeout: 120000  # 2 minutos
+  maxDownloadSize: 100
+
+# Monitoreo y métricas
+monitoring:
+  enabled: true
+  metricsEndpoint: "/metrics"
+  healthCheck: true
+
+# Configuración de rendimiento
+performance:
+  enableProfiling: false
+  memoryLimit: "2GB"
+  cpuLimit: "80%"

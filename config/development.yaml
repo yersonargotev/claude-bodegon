@@ -1,0 +1,39 @@
+# Configuración para entorno de desarrollo
+# Hereda todo de default.yaml y sobrescribe solo lo necesario
+
+agent:
+  model: "sonnet"
+  maxConcurrentJobs: 1  # Más bajo para desarrollo
+
+scraping:
+  maxImages: 2  # Menos imágenes para pruebas rápidas
+  imageQuality: "medium"  # Calidad media para desarrollo
+  browserConfig:
+    headless: false  # Ver el navegador durante desarrollo
+
+composition:
+  maxImagesPerComposition: 3
+  outputDirectory: "./dev-output"
+
+retry:
+  maxAttempts: 2  # Menos reintentos para desarrollo rápido
+  baseDelay: 1000  # 1 segundo
+
+progress:
+  interactive: true
+  detailedOutput: true  # Output detallado en desarrollo
+  showEta: true
+
+logging:
+  level: "debug"  # Logs detallados para depuración
+  console: true
+
+cache:
+  enabled: true
+  expiration: 1  # 1 hora para desarrollo
+
+# Configuración específica para testing
+testing:
+  mockExternalServices: true
+  useTestData: true
+  skipSlowOperations: true

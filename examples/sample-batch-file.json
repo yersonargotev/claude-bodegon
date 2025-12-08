@@ -1,0 +1,62 @@
+{
+  "name": "Ejemplo de Lote - Productos Tecnológicos",
+  "description": "Archivo JSON de ejemplo para procesamiento por lotes de productos tecnológicos",
+  "created": "2025-01-07T12:00:00Z",
+  "requests": [
+    {
+      "url": "https://www.exito.com/tecnologia/consolas-y-videojuegos",
+      "prompt": "Crea un bodegón gamer estilo cyberpunk con iluminación neón y elementos futuristas",
+      "outputName": "gaming-cyberpunk",
+      "customSettings": {
+        "maxImages": 4,
+        "imageQuality": "high",
+        "outputDirectory": "./batch-output/gaming"
+      }
+    },
+    {
+      "url": "https://www.falabella.com/tecnologia/laptops",
+      "prompt": "Composición minimalista elegante para laptops profesionales con fondo limpio",
+      "outputName": "laptops-professional",
+      "customSettings": {
+        "maxImages": 3,
+        "imageQuality": "high",
+        "outputDirectory": "./batch-output/office"
+      }
+    },
+    {
+      "url": "https://www.linio.com/tecnologia/smartphones",
+      "prompt": "Bodegón dramático con smartphones y reflejos brillantes sobre fondo oscuro",
+      "outputName": "smartphones-dramatic",
+      "customSettings": {
+        "maxImages": 3,
+        "imageQuality": "medium",
+        "outputDirectory": "./batch-output/mobile"
+      }
+    },
+    {
+      "url": "https://www.mercadolibre.com/audio",
+      "prompt": "Composición musical rítmica con audífonos y elementos sonoros abstractos",
+      "outputName": "audio-rhythmic",
+      "customSettings": {
+        "maxImages": 5,
+        "imageQuality": "high",
+        "outputDirectory": "./batch-output/audio"
+      }
+    },
+    {
+      "url": "https://www.amazon.com/cameras-photo",
+      "prompt": "Bodegón fotográfico profesional con cámaras como obras de arte contemporáneo",
+      "outputName": "cameras-artistic",
+      "customSettings": {
+        "maxImages": 4,
+        "imageQuality": "high",
+        "outputDirectory": "./batch-output/photo"
+      }
+    }
+  ],
+  "batchConfig": {
+    "parallelProcessing": true,
+    "maxConcurrent": 3,
+    "outputDirectory": "./batch-output"
+  }
+}
